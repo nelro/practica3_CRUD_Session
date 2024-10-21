@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Seminarios</title>
+    <link rel="stylesheet" href="../static/css/demo.css">
+</head>
+<body>
+    <h1>Registro en Seminarios</h1>
+    <div class="container">
+        <form action="{{ url_for('registro_sem') }}" method="post">
+            <div class="fieldset-group">
+                <div class="data-container">
+                    <fieldset>
+                        <legend>Datos</legend>
+                        <div class="form-group">
+                            <label for="fecha">Fecha:</label>
+                            <input type="date" id="fecha" name="fecha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" id="apellidos" name="apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Turno:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="turno" value="mañana" required> Mañana</label>
+                                <label><input type="radio" name="turno" value="tarde"> Tarde</label>
+                                <label><input type="radio" name="turno" value="noche"> Noche</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="seminar-container">
+                    <fieldset>
+                        <legend>Seminarios disponibles</legend>
+                        <label><input type="checkbox" name="seminario" value="ia"> Inteligencia Artificial</label>
+                        <label><input type="checkbox" name="seminario" value="ml"> Machine Learning</label>
+                        <label><input type="checkbox" name="seminario" value="simulacion"> Simulación con Arena</label>
+                        <label><input type="checkbox" name="seminario" value="robotica"> Robótica Educativa</label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="submit-button">
+                <button type="submit">Enviar registro</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

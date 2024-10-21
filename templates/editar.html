@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Registro</title>
+    <link rel="stylesheet" href="../static/css/demo.css">
+</head>
+<body>
+    <h1>Editar Registro de Seminarios</h1>
+    <div class="container">
+        <form action="{{ url_for('editar', id=captura_id['id']) }}" method="post">
+            <div class="fieldset-group">
+                <div class="data-container">
+                    <fieldset>
+                        <legend>Datos</legend>
+                        <div class="form-group">
+                            <label for="fecha">Fecha:</label>
+                            <input type="date" id="fecha" name="fecha" value="{{ captura_id['fecha'] }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" value="{{ captura_id['nombre'] }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" id="apellidos" name="apellidos" value="{{ captura_id['apellidos'] }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Turno:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="turno" value="mañana" {% if captura_id['turno'] == 'mañana' %} checked {% endif %} required> Mañana</label>
+                                <label><input type="radio" name="turno" value="tarde" {% if captura_id['turno'] == 'tarde' %} checked {% endif %}> Tarde</label>
+                                <label><input type="radio" name="turno" value="noche" {% if captura_id['turno'] == 'noche' %} checked {% endif %}> Noche</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="seminar-container">
+                    <fieldset>
+                        <legend>Seminarios disponibles</legend>
+                        <label><input type="checkbox" name="seminario" value="ia" {% if 'ia' in captura_id['seminario'] %} checked {% endif %}> Inteligencia Artificial</label>
+                        <label><input type="checkbox" name="seminario" value="ml" {% if 'ml' in captura_id['seminario'] %} checked {% endif %}> Machine Learning</label>
+                        <label><input type="checkbox" name="seminario" value="simulacion" {% if 'simulacion' in captura_id['seminario'] %} checked {% endif %}> Simulación con Arena</label>
+                        <label><input type="checkbox" name="seminario" value="robotica" {% if 'robotica' in captura_id['seminario'] %} checked {% endif %}> Robótica Educativa</label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="submit-button">
+                <button type="submit">Actualizar registro</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
